@@ -1,6 +1,5 @@
 FROM praqma/network-multitool:latest
 
-# Add nsm-nse code contents
-COPY apioverride /apioverride
+COPY kubeconfigGenerator /kubeconfigGenerator
 
-CMD ["./apioverride"]
+CMD ["./kubeconfigGenerator"]

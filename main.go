@@ -21,14 +21,20 @@ func main() {
 		panic(err)
 	}
 
-	c, err := GetKubeconfigWithSAToken("local", "local", "http://127.0.0.1:17003", caData, cfg.BearerToken)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	url := fmt.Sprintf("http://127.0.0.1:%s", port)
+	c, err := GetKubeconfigWithSAToken("local", "local", url, caData, cfg.BearerToken)
 	if err != nil {
 		panic(err)
 	}
 
 	filename := os.Getenv("KUBECONFIG_FILENAME")
 	if filename == "" {
-		filename = "/kubeconfig"
+		filename = "/kubeconfigs/kubeconfig"
 	}
 
 	err = ioutil.WriteFile(filename, []byte(c), 0644)
