@@ -1,4 +1,4 @@
-FROM praqma/network-multitool:latest
+FROM alpine:latest
 
 COPY kubeconfigGenerator /kubeconfigGenerator
 
