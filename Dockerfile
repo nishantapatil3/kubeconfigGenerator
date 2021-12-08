@@ -1,5 +1,5 @@
 FROM alpine:latest
 
-COPY kubeconfigGenerator /kubeconfigGenerator
+COPY build/kubeconfigGenerator /kubeconfigGenerator
 
 CMD ["./kubeconfigGenerator"]
