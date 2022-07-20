@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Build
+      run: make build
+
+    - name: Test
+      run: go test -v ./...
+      
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: nishantapatil3/kubeconfiggenerator:latest
