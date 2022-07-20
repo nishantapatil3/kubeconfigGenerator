@@ -22,7 +22,7 @@ jobs:
     - name: Test
       run: go test -v ./...
       
-    - name: Build and push
+    - name: Build and push docker
       uses: docker/build-push-action@v3
       with:
         push: true
